@@ -53,6 +53,11 @@ nav .sidenav-trigger{
   background-color: #0080f9;
 }
 
+.followbtn:hover {
+  filter: brightness(120%);
+  background-color: #0080f9;
+}
+
 .follow-user i{
   font-size: 18px;
 }
