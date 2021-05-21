@@ -1,3 +1,49 @@
+importScripts("https://www.gstatic.com/firebasejs/7.16.1/firebase-app.js");
+importScripts(
+    "https://www.gstatic.com/firebasejs/7.16.1/firebase-messaging.js",
+);
+
+firebase.initializeApp({
+  messagingSenderId: "243459482774",
+  apiKey: "AIzaSyAtjnNNaxMd6Ga8k990SAFcj5vIH_aEnME",
+  projectId: "dahl-985a9",
+  appId: "1:243459482774:web:d24ff58d9fbdaf13314eb7",
+});
+
+// Retrieve an instance of Firebase Messaging so that it can handle background
+// messages.
+const messaging = firebase.messaging();
+
+messaging.setBackgroundMessageHandler(function(payload) {
+    console.log(
+        "[firebase-messaging-sw.js] Received background message ",
+        payload,
+    );
+    // Customize notification here
+    const notificationTitle = "Background Message Title";
+    const notificationOptions = {
+        body: "Background Message body.",
+        icon: "/itwonders-web-logo.png",
+    };
+
+    return self.registration.showNotification(
+        notificationTitle,
+        notificationOptions,
+    );
+});
+
+const messaging = firebase.messaging();
+ messaging
+   .requestPermission()
+   .then(function () {
+     MsgElem.innerHTML = "Notification permission granted." 
+     console.log("Notification permission granted.");
+   })
+   .catch(function (err) {
+   ErrElem.innerHTML = ErrElem.innerHTML + "; " + err
+   console.log("Unable to get permission to notify.", err);
+ });
+
 const staticCacheName = "site-static-v4";
 const dynamicCacheName = "site-dynamic-v4";
 const assets = [
