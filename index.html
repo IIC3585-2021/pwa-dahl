@@ -17,6 +17,10 @@
     <link rel="manifest" href="/manifest.json" />
   </head>
   <body class="grey lighten-4">
+    <div id="token"></div> 
+    <div id="msg"></div> 
+    <div id="notis"></div>
+    <div id="err"></div>
     <!-- top nav -->
     <nav class="z-depth-0">
       <div class="nav-wrapper container">
@@ -33,6 +37,10 @@
     <ul id="side-menu" class="sidenav side-menu">
       <li><a class="subheader">DAHLInstagram</a></li>
       <li><a href="/" class="waves-effect">Home</a></li>
+      <li><a class="subheader">Notificaciones</a></li>
+      <div id="notifications"></div> 
+      <div id="notification-title"></div>
+      <div id="notification-description"></div>
     </ul>
 
     <!-- users -->
@@ -109,11 +117,15 @@
     <!-- The core Firebase JS SDK is always required and must be listed first -->
 
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/7.16.1/firebase-messaging.js"></script>
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 
     <script>
+      MsgElem = document.getElementById('msg'); 
+      TokenElem = document.getElementById('token'); 
+      NotisElem = document.getElementById('notis'); 
+      ErrElem = document.getElementById('err');
       // Your web app's Firebase configuration
       var firebaseConfig = {
         apiKey: "AIzaSyAtjnNNaxMd6Ga8k990SAFcj5vIH_aEnME",
@@ -146,6 +158,14 @@
       let enableForegroundNotification = true;
       messaging.onMessage(function (payload) {
         console.log("Message received. ", payload);
+        const notifContainer = document.querySelector('#notification-description')
+        let data = { 
+          message: payload.notification.title, 
+          timeout: 5000, 
+          actionHandler() { location.reload() 
+          }, 
+          actionText: 'Reload' } 
+        notifContainer.append(payload.notification.title);// + '-'+payload.notification.text) 
         NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
 
         if (enableForegroundNotification) {

@@ -83,3 +83,9 @@ input {
 form .input-field {
   margin-top: 30px;
 }
+#notification-title {
+  font-weight: bold;
+}
+#notification-description {
+  font-size: 0.8em;
+}
