@@ -167,7 +167,7 @@
           actionHandler() { location.reload() 
           }, 
           actionText: 'Reload' } 
-        notifContainer.innerHTML += '<div class="notification-title">{payload.notification.title}</div><div class="notification-description">{payload.notification.body}</div>';// + '-'+payload.notification.text) 
+        notifContainer.innerHTML += `<div class="card-panel user white row"><div class="notification-title">${payload.notification.title}</div><div class="notification-description">${payload.notification.body}</div></div>`;// + '-'+payload.notification.text) 
         NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
 
         if (enableForegroundNotification) {
@@ -186,7 +186,7 @@
           actionHandler() { location.reload() 
           }, 
           actionText: 'Reload' } 
-          notifContainer.innerHTML += '<div class="notification-title">{payload.notification.title}</div><div class="notification-description">{payload.notification.body}</div>';// + '-'+payload.notification.text) 
+          notifContainer.innerHTML += `<div class="card-panel user white row"><div class="notification-title">${payload.notification.title}</div><div class="notification-description">${payload.notification.body}</div></div>`;
         NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
 
         if (enableForegroundNotification) {

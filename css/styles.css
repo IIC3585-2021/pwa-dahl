@@ -85,7 +85,9 @@ form .input-field {
 }
 .notification-title {
   font-weight: bold;
+  margin: 20px;
 }
 .notification-description {
   font-size: 0.8em;
+  margin: 20px;
 }
