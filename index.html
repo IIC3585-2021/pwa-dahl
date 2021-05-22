@@ -84,7 +84,7 @@
           <div class="user-description">New to Instagram</div>
         </div>
         <div class="follow-user">
-          <button id="followbtn" class="btn-small followbtn">Follow</button>
+          <button class="btn-small followbtn" onclick="getMessage(userToken)">Follow</button>
         </div>
       </div>
     </div>
@@ -140,21 +140,23 @@
       };
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
+      let userToken = '';
       const messaging = firebase.messaging();
       messaging
         .requestPermission()
         .then(function () {
-          MsgElem.innerHTML = "Notification permission granted.";
+          // MsgElem.innerHTML = "Notification permission granted.";
           console.log("Notification permission granted.");
 
           // get the token in the form of promise
-          return messaging.getToken();
+          userToken = messaging.getToken();
+          return userToken;
         })
-        .then(function (token) {
-          TokenElem.innerHTML = "Device token is : <br>" + token;
-        })
+        // .then(function (token) {
+        //   TokenElem.innerHTML = "Device token is : <br>" + token;
+        // })
         .catch(function (err) {
-          ErrElem.innerHTML = ErrElem.innerHTML + "; " + err;
+          // ErrElem.innerHTML = ErrElem.innerHTML + "; " + err;
           console.log("Unable to get permission to notify.", err);
         });
 
@@ -169,7 +171,7 @@
           }, 
           actionText: 'Reload' } 
         notifContainer.innerHTML += `<div class="card-panel user white row"><div class="notification-title">${payload.notification.title}</div><div class="notification-description">${payload.notification.body}</div></div>`;// + '-'+payload.notification.text) 
-        NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
+        //NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
 
         if (enableForegroundNotification) {
           let notification = payload.notification;

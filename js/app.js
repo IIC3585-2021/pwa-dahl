@@ -1,4 +1,3 @@
-console.log('app')
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("/sw.js")

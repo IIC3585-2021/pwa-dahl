@@ -1,8 +1,5 @@
-const button = document.getElementById("followbtn");
-console.log('elemento')
-
-button.addEventListener("click", async () => {
-  console.log('on click');
+const getMessage = async (userToken) => {
+  console.log('userToken', await userToken);
   try {
     const response = await fetch("https://fcm.googleapis.com/fcm/send", {
       headers: {
@@ -12,7 +9,7 @@ button.addEventListener("click", async () => {
       },
       method: "post",
       body: JSON.stringify({
-        to: "eVVvlCl4Aek4jflFx-VyN6:APA91bE9R3-FNRYdB3zrwG2QntIfI4ID91L9Sn8W-7y68J9SvnU4E380VaWmtsFvj9gp2NwDIwMK-XNjbwHM2VtPhKGHwE0EPc8pQL9qjIMeJCp-Ixa4a4-9-43zL7e27rveQBHzbbnk",
+        to: await userToken,
         notification: {
           title: "AA",
           body: "Yellowwwwwwwwwwwwww",
@@ -23,4 +20,4 @@ button.addEventListener("click", async () => {
   } catch (err) {
     console.error(`Error: ${err}`);
   }
-});
+};
