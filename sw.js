@@ -78,17 +78,21 @@ self.addEventListener("activate", (evt) => {
 //   }
 // });
 
-self.addEventListener('fetch', event => {
-  //console.log('fetch called');
-  if (event.request.method === 'GET' && event.request.url.indexOf('https://jsonplaceholder.typicode.com') !== -1) {
+self.addEventListener("fetch", (event) => {
+  if (
+    event.request.method === "GET" &&
+    event.request.url.indexOf("https://jsonplaceholder.typicode.com") !== -1
+  ) {
     event.respondWith(
-      caches.open(staticCacheName).then(cache => {
-        return fetch(event.request).then(response => {
-          cache.put(event.request, response.clone());
-          return response;
-        }).catch(error => {
-          return fetch(event.request);
-        });
+      caches.open(staticCacheName).then((cache) => {
+        return fetch(event.request)
+          .then((response) => {
+            cache.put(event.request, response.clone());
+            return response;
+          })
+          .catch((error) => {
+            return fetch(event.request);
+          });
       })
     );
   }
