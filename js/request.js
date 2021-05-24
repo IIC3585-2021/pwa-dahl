@@ -1,5 +1,5 @@
-const getMessage = async (userToken) => {
-  console.log('userToken', await userToken);
+const getMessage = async (userToken, x) => {
+  console.log("userToken", await userToken);
   try {
     const response = await fetch("https://fcm.googleapis.com/fcm/send", {
       headers: {
@@ -11,8 +11,8 @@ const getMessage = async (userToken) => {
       body: JSON.stringify({
         to: await userToken,
         notification: {
-          title: "AA",
-          body: "Yellowwwwwwwwwwwwww",
+          title: "Nueva solicitud",
+          body: `${x} quiere seguirte.`,
         },
       }),
     });
