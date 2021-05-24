@@ -45,8 +45,33 @@
       <div id="notifications"></div> 
     </ul>
 
+    <script>
+      let users = document.getElementById('users');
+
+      //fetch('https://jsonplaceholder.typicode.com/users')
+      //  .then((response) => response.json())
+      //  .then((response) => {
+      //    response.forEach(x => {
+//
+      //      users.innerHTML += `
+      //      <div class="card-panel user white row">
+      //        <img src="/img/user.png" alt="user thumb" />
+      //        <div class="user-info">
+      //          <div class="user-name">${x.username}</div>
+      //          <div class="user-description">${x.name}</div>
+      //        </div>
+      //        <div class="follow-user">
+      //          <button class="btn-small followbtn">Follow</button>
+      //        </div>
+      //      </div>
+      //      `
+      //      parsed += property + ": " + myobj[property] + "\n";     
+      //    })
+      //  });
+    </script>
+
     <!-- users -->
-    <div class="users container grey-text text-darken-1">
+    <div id="users" class="users container grey-text text-darken-1">
       <div class="card-panel user white row">
         <img src="/img/user.png" alt="user thumb" />
         <div class="user-info">
@@ -74,7 +99,7 @@
           <div class="user-description">New to Instagram</div>
         </div>
         <div class="follow-user">
-          <a class="btn-small followbtn">Follow</a>
+          <a class="btn-small followbtn" onclick="test()">Follow</a>
         </div>
       </div>
       <div class="card-panel user white row">
@@ -88,6 +113,8 @@
         </div>
       </div>
     </div>
+
+    <script src="/js/test.js"></script>
 
     <!-- <div class="center">
     <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
