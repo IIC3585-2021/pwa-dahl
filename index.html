@@ -47,56 +47,12 @@
 
     <!-- users -->
     <div id="users" class="users container grey-text text-darken-1">
-      <div class="card-panel user white row">
-        <img src="/img/user.png" alt="user thumb" />
-        <div class="user-info">
-          <div class="user-name">Edame Noodles</div>
-          <div class="user-description">New to Instagram</div>
-        </div>
-        <div class="follow-user">
-          <a class="btn-small followbtn">Follow</a>
-        </div>
-      </div>
-      <div class="card-panel user white row">
-        <img src="/img/user.png" alt="user thumb" />
-        <div class="user-info">
-          <div class="user-name">Edame Noodles</div>
-          <div class="user-description">New to Instagram</div>
-        </div>
-        <div class="follow-user">
-          <a class="btn-small followbtn">Follow</a>
-        </div>
-      </div>
-      <div class="card-panel user white row">
-        <img src="/img/user.png" alt="user thumb" />
-        <div class="user-info">
-          <div class="user-name">Edame Noodles</div>
-          <div class="user-description">New to Instagram</div>
-        </div>
-        <div class="follow-user">
-          <a class="btn-small followbtn" onclick="test()">Follow</a>
-        </div>
-      </div>
-      <div class="card-panel user white row">
-        <img src="/img/user.png" alt="user thumb" />
-        <div class="user-info">
-          <div class="user-name">Edame Noodles</div>
-          <div class="user-description">New to Instagram</div>
-        </div>
-        <div class="follow-user">
-          <button class="btn-small followbtn" onclick="getMessage(userToken)">
-            Follow
-          </button>
-        </div>
-      </div>
     </div>
 
     <script>
       let users = document.getElementById("users");
-      //console.log('cache', caches);
 
       fetch("https://jsonplaceholder.typicode.com/users/")
-        //.then(response => caches.open('mysite-dynamic').then(cache => cache.put(response.clone())))
         .then((response) => response.json())
         .then((response) => {
           response.forEach((x) => {
@@ -119,32 +75,6 @@
     </script>
 
     <script src="/js/test.js"></script>
-
-    <!-- <div class="center">
-    <a class="btn-floating btn-small btn-large add-btn sidenav-trigger" data-target="side-form">
-      <i class="material-icons">add</i>
-    </a>
-  </div> -->
-
-    <!-- add user side nav -->
-    <!-- <div id="side-form" class="sidenav side-form">
-    <form class="add-user container section">
-      <h6 >New user</h6>
-      <div class="divider"></div>
-      <div class="input-field">
-        <input placeholder="e.g. Instagram soup" id="title" type="text" class="validate">
-        <label for="title">user Title</label>
-      </div>
-      <div class="input-field">
-        <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
-        <label for="ingredients">Ingredients</label>
-      </div>
-      <div class="input-field center">
-        <button class="btn-small">Add</button>
-      </div>
-    </form>
-  </div> -->
-
     <script src="/js/app.js"></script>
     <script src="/js/ui.js"></script>
     <script src="/js/request.js"></script>
@@ -213,27 +143,7 @@
           });
         }
       });
-      messaging.onBackgroundMessage(function (payload) {
-        console.log("Message received. ", payload);
-        const notifContainer = document.getElementById("notifications");
-        let data = {
-          message: payload.notification.title,
-          timeout: 5000,
-          actionHandler() {
-            location.reload();
-          },
-          actionText: "Reload",
-        };
-        notifContainer.innerHTML += `<div class="card-panel user white row"><div class="notification-title">${payload.notification.title}</div><div class="notification-description">${payload.notification.body}</div></div>`;
-        NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
 
-        if (enableForegroundNotification) {
-          let notification = payload.notification;
-          navigator.serviceWorker.getRegistrations().then((registration) => {
-            registration[0].showNotification(notification.title);
-          });
-        }
-      });
     </script>
   </body>
 </html>
