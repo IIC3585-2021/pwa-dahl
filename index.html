@@ -92,8 +92,10 @@
 
     <script>
       let users = document.getElementById('users');
+      //console.log('cache', caches);
 
       fetch('https://jsonplaceholder.typicode.com/users/')
+        //.then(response => caches.open('mysite-dynamic').then(cache => cache.put(response.clone())))
         .then((response) => response.json())
         .then((response) => {
           response.forEach(x => {
