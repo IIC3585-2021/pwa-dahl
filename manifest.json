@@ -30,12 +30,6 @@
       "type": "image/png",
       "sizes": "128x128",
       "purpose": "any maskable"
-    },
-    {
-      "src": "/img/icons/icon-512x512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any maskable"
     }
   ]
 }
